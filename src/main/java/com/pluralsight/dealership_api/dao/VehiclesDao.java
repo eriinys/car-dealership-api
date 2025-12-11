@@ -15,6 +15,10 @@ import java.util.List;
 public class VehiclesDao {
     private DataSource dataSource;
 
+    public VehiclesDao(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
+
     public Vehicle insertVehicle(Vehicle vehicle){
         String sql = "INSERT INTO vehicles (VIN, `year`, make, model, vehicle_type, color, odometer, price) " +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
