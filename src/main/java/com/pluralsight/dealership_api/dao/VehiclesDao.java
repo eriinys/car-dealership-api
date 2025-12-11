@@ -70,7 +70,7 @@ public class VehiclesDao {
         }
     }
 
-    //uses wrapper since filtering in controller can return null
+    //uses wrapper types to handle null values passed from controller
     public List<Vehicle> filterVehicle(Double minPrice,
                                        Double maxPrice,
                                        String make,
