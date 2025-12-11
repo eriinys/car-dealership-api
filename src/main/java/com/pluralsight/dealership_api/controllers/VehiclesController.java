@@ -34,7 +34,7 @@ public class VehiclesController {
         vehiclesDao.deleteVehicle(vin);
     }
 
-    @RequestMapping(path="/vehicles/", method=RequestMethod.GET)
+    @RequestMapping(path="/vehicles", method=RequestMethod.GET)
     public List<Vehicle> getVehicles(
             @RequestParam(required = false) Double minPrice,
             @RequestParam(required = false) Double maxPrice,
