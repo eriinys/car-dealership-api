@@ -21,6 +21,8 @@ public class Vehicle {
         this.price = price;
     }
 
+    public Vehicle(){}
+
     //region getters
     public String getVin() {
         return vin;
