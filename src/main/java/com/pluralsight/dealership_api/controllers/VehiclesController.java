@@ -22,7 +22,7 @@ public class VehiclesController {
         return vehiclesDao.insertVehicle(vehicle);
     }
 
-    @RequestMapping(path="/vehicles/", method=RequestMethod.PUT)
+    @RequestMapping(path="/vehicles/{vin}", method=RequestMethod.PUT)
     public void updateVehicle(
             @PathVariable String vin,
             @RequestBody Vehicle vehicle){
