@@ -2,31 +2,31 @@ package com.pluralsight.dealership_api.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public abstract class Contract {
-    protected String date;
+    protected LocalDate date;
     protected String customerName;
     protected String email;
-    protected Vehicle vehicle;
+    protected String vin;
     protected double totalPrice;
-    protected double monthlyPay;
+    protected double monthlyPay;;
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
     LocalDate today = LocalDate.now();
 
-    public Contract(String date, String customerName, String email, Vehicle vehicle) {
-        this.date = today.format(formatter);
+    public Contract(LocalDate date, String customerName, String email, String vin) {
+        this.date = today;
         this.customerName = customerName;
         this.email = email;
-        this.vehicle = vehicle;
+        this.vin = vin;
     }
 
     //region getters/setters
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(LocalDate date) {
+        this.date = today;
     }
 
     public String getCustomerName() {
@@ -43,12 +43,13 @@ public abstract class Contract {
         this.email = email;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public String getVin() {
+        return vin;
     }
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setVin(String vin) {
+        this.vin = vin;
     }
+
     //endregion
 
     //abstract methods
@@ -57,12 +58,5 @@ public abstract class Contract {
 
     public abstract String toFileString();
 
-    public String toString(){
-        return String.format("%s|%s|%s|%d|%d|%s|%s|%s|%s|%d|%.2f|", date, customerName, email, vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
-
-        //DATE|CUSTOMER_NAME|CUSTOMER_EMAIL|VIN|Y
-        //EAR|MAKE|MODEL|VEHICLE_TYPE|COLOR|ODOMETER|VEHICLE_PRI
-        //CE|[contract-specific-fields]|TOTAL_PRICE|MONTHLY_PAYMENT
-    }
 }
 

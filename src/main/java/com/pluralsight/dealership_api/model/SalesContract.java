@@ -1,13 +1,18 @@
 package com.pluralsight.dealership_api.model;
 
+import java.time.LocalDate;
+
 public class SalesContract extends Contract {
     private final double salesTaxAmt;
     private final double recordingFee;
     private double processingFee;
     private boolean financed;
+    private int salesId;
+    private Vehicle vehicle;
 
-    public SalesContract(String date, String customerName, String email, Vehicle vehicle, boolean financed) {
-        super(date, customerName, email, vehicle);
+    public SalesContract(LocalDate date, String customerName, String email, String vin, int salesId, boolean financed) {
+        super(date, customerName, email, vin);
+        this.salesId = salesId;
         this.salesTaxAmt = 0.05;
         this.recordingFee = 100;
         this.financed = financed;
@@ -19,6 +24,12 @@ public class SalesContract extends Contract {
 
     public double getRecordingFee() {
         return recordingFee;
+    }
+    public int getSalesId() {
+        return salesId;
+    }
+    public void setSalesId(int salesId) {
+        this.salesId = salesId;
     }
 
     public boolean isFinanced() {
